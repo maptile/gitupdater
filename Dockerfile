@@ -1,12 +1,13 @@
-FROM alpine
+FROM ubuntu
 
 COPY ./run.sh /run.sh
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
-        && apk add --update git \
-        && apk upgrade \
-        && apk add --no-cache ca-certificates \
-        && chmod 0777 /run.sh
+# sed -i 's/\/archive.ubuntu.com/\/cn.archive.ubuntu.com/g' /etc/apt/sources.list \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install git -y \
+    && apt-get autoremove -y \
+    && chmod 0777 /run.sh
 
 VOLUME /src
 

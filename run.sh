@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 echo "Parameters:"
 echo "Clone from remote: $GU_CLONE"
